@@ -1,0 +1,52 @@
+[
+  {
+    "timestamp": "2026-04-18 20:48:20",
+    "query": "show library",
+    "response": "The central library is open from 8:00 AM to 10:00 PM. It is located near the Science Block."
+  },
+  {
+    "timestamp": "2026-04-18 20:48:24",
+    "query": "QR_SCAN_Lab",
+    "response": "\ud83d\udccd Welcome to the Advanced AI Lab. Please log in to your workstation to begin. | Status: Available: 12 PCs"
+  },
+  {
+    "timestamp": "2026-04-18 20:48:25",
+    "query": "QR_SCAN_Library",
+    "response": "\ud83d\udccd Welcome to the Central Library! Silence is appreciated. You can find study cabins on the 2nd floor. | Status: Occupancy: 40%"
+  },
+  {
+    "timestamp": "2026-04-18 20:48:26",
+    "query": "QR_SCAN_Canteen",
+    "response": "\ud83d\udccd Welcome to the Canteen. Lunch special today: Vegetable Biryani. | Status: Wait time: ~10 mins"
+  },
+  {
+    "timestamp": "2026-04-18 20:49:17",
+    "query": "QR_SCAN_Lab",
+    "response": "\ud83d\udccd Welcome to the Advanced AI Lab. Please log in to your workstation to begin. | Status: Available: 12 PCs"
+  },
+  {
+    "timestamp": "2026-04-18 20:59:58",
+    "query": "QR_SCAN_Canteen",
+    "response": "\ud83d\udccd Welcome to the Canteen. Lunch special today: Vegetable Biryani. | Status: Wait time: ~10 mins"
+  },
+  {
+    "timestamp": "2026-04-18 21:03:40",
+    "query": "QR_SCAN_Canteen",
+    "response": "\ud83d\udccd Welcome to the Canteen. Lunch special today: Vegetable Biryani. | Status: Wait time: ~10 mins"
+  },
+  {
+    "timestamp": "2026-04-18 21:04:12",
+    "query": "library.",
+    "response": "The central library is open from 8:00 AM to 10:00 PM. It is located near the Science Block."
+  },
+  {
+    "timestamp": "2026-04-18 21:06:56",
+    "query": "QR_SCAN_Lab",
+    "response": "\ud83d\udccd Welcome to the Advanced AI Lab. Please log in to your workstation to begin. | Status: Available: 12 PCs"
+  },
+  {
+    "timestamp": "2026-04-18 21:07:03",
+    "query": "QR_SCAN_Canteen",
+    "response": "\ud83d\udccd Welcome to the Canteen. Lunch special today: Vegetable Biryani. | Status: Wait time: ~10 mins"
+  }
+]

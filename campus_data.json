@@ -1,0 +1,35 @@
+{
+  "campus_name": "Smart Campus Command Center",
+  "sensors": {
+    "temperature": 24.2,
+    "occupancy": 68,
+    "energy": 1.4,
+    "status": "Healthy"
+  },
+  "knowledge_base": {
+    "library": "The central library is open from 8:00 AM to 10:00 PM. It is located near the Science Block.",
+    "canteen": "The main canteen is located behind the auditorium. Timing: 9:00 AM - 8:00 PM.",
+    "lab": "Computer and Science labs are located in Block B and C respectively. Access requires a valid ID.",
+    "office": "The administration office is in the Main Building, Ground Floor.",
+    "hostel": "Boys and Girls hostels are on the east and west wings of the campus.",
+    "parking": "Parking is available near the main gate and behind the sports complex.",
+    "wifi": "Campus-wide high-speed WiFi is available. Sign in with your student credentials.",
+    "medical": "The health center is open 24/7 for emergencies, located near the girl's hostel.",
+    "events": "Check the notice board in the main hall for upcoming hackathons and cultural fests!"
+  },
+  "qr_locations": {
+    "Library": {
+      "info": "Welcome to the Central Library! Silence is appreciated. You can find study cabins on the 2nd floor.",
+      "status": "Occupancy: 40%"
+    },
+    "Lab": {
+      "info": "Welcome to the Advanced AI Lab. Please log in to your workstation to begin.",
+      "status": "Available: 12 PCs"
+    },
+    "Canteen": {
+      "info": "Welcome to the Canteen. Lunch special today: Vegetable Biryani.",
+      "status": "Wait time: ~10 mins"
+    }
+  },
+  "default_response": "I'm sorry, I don't have information on that. Try searching for 'library', 'canteen', 'lab', or 'wifi'."
+}

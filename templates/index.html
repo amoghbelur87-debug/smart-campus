@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Smart Campus Hub</title>
+    <meta name="description" content="Unified AI-powered campus management hub with real-time analytics and interaction.">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects"></div>
+    
+    <div class="app-wrapper">
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-ai">SMART</span> HUB <span class="accent">COMMAND</span>
+            </div>
+            <div class="global-status">
+                <span class="status-badge"><span class="pulse-dot"></span> System Live</span>
+                <span class="timestamp" id="live-clock">--:--:--</span>
+            </div>
+        </header>
+
+        <section class="sensor-grid">
+            <div class="glass-card sensor-card" id="temp-card">
+                <div class="sensor-icon">🌡️</div>
+                <div class="sensor-info">
+                    <label>Temperature</label>
+                    <div class="sensor-value"><span id="temp-val">--</span>°C</div>
+                </div>
+            </div>
+            <div class="glass-card sensor-card" id="occupancy-card">
+                <div class="sensor-icon">👥</div>
+                <div class="sensor-info">
+                    <label>Occupancy</label>
+                    <div class="sensor-value"><span id="occupancy-val">--</span>%</div>
+                </div>
+            </div>
+            <div class="glass-card sensor-card" id="energy-card">
+                <div class="sensor-icon">⚡</div>
+                <div class="sensor-info">
+                    <label>Energy Load</label>
+                    <div class="sensor-value"><span id="energy-val">--</span>kW</div>
+                </div>
+            </div>
+        </section>
+
+        <main class="main-layout">
+            <!-- Left Panel: Analytics and QR Analyzer -->
+            <div class="left-panel">
+                <div class="glass-card widget qr-analyzer">
+                    <div class="widget-header">
+                        <h3>QR Simulation Analyzer</h3>
+                    </div>
+                    <div class="qr-controls">
+                        <button onclick="simulateScan('Library')" class="qr-btn">📚 Library</button>
+                        <button onclick="simulateScan('Lab')" class="qr-btn">🔬 Lab</button>
+                        <button onclick="simulateScan('Canteen')" class="qr-btn">🍴 Canteen</button>
+                    </div>
+                    <div id="analyzer-result" class="analyzer-viewport">
+                        <p class="placeholder-text">Scan a location to analyze live data...</p>
+                    </div>
+                </div>
+
+                <div class="glass-card widget analytics-widget">
+                    <div class="widget-header">
+                        <h3>Campus Insights</h3>
+                    </div>
+                    <div class="chart-container">
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 65%;"><label>Lib</label></div>
+                            <div class="bar" style="height: 40%;"><label>Lab</label></div>
+                            <div class="bar" style="height: 85%;"><label>Café</label></div>
+                            <div class="bar" style="height: 50%;"><label>Adm</label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: AI Chat Assistant -->
+            <div class="right-panel">
+                <div class="glass-card chat-widget">
+                    <div class="widget-header">
+                        <h3>AI Campus Assistant</h3>
+                    </div>
+                    <div id="chat-history" class="chat-history">
+                        <div class="message ai">Hello! I'm your Smart Campus AI. How can I assist you today?</div>
+                    </div>
+                    <form id="chat-form" class="chat-input-area">
+                        <button type="button" id="voice-btn" class="icon-btn">🎤</button>
+                        <input type="text" id="user-input" placeholder="Query campus data..." autocomplete="off">
+                        <button type="submit" class="send-btn">➔</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2026 Smart Campus AI Unified Hub | Designed for Low Connectivity</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
