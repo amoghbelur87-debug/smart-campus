@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import json
 import os
 import random
+import time
 from datetime import datetime
 
 app = Flask(__name__)
@@ -10,20 +11,35 @@ DATA_FILE = 'campus_data.json'
 LOGS_FILE = 'logs.json'
 
 def load_json(filepath):
+    # Basic protection against empty/missing files
     if not os.path.exists(filepath):
-        return {} if 'data' in filepath else []
-    with open(filepath, 'r') as f:
+        return {} if 'campus' in filepath else []
+    
+    # Retry logic for Windows file locks
+    for _ in range(3):
         try:
-            return json.load(f)
-        except:
-            return {} if 'data' in filepath else []
+            with open(filepath, 'r') as f:
+                content = f.read().strip()
+                if not content:
+                    return {} if 'campus' in filepath else []
+                return json.loads(content)
+        except (json.JSONDecodeError, IOError):
+            time.sleep(0.1)
+    return {} if 'campus' in filepath else []
 
 def save_json(filepath, data):
-    with open(filepath, 'w') as f:
-        json.dump(data, f, indent=2)
+    for _ in range(3):
+        try:
+            with open(filepath, 'w') as f:
+                json.dump(data, f, indent=2)
+                return True
+        except IOError:
+            time.sleep(0.1)
+    return False
 
 def log_interaction(event_type, details, response):
     logs = load_json(LOGS_FILE)
+    if not isinstance(logs, list): logs = []
     logs.append({
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "type": event_type,
@@ -39,12 +55,22 @@ def index():
 @app.route('/api/sensors')
 def get_sensors():
     data = load_json(DATA_FILE)
-    # Simulate slight fluctuation in sensors
-    sensors = data.get('sensors', {})
-    sensors['temperature'] = round(22 + random.uniform(-2, 2), 1)
-    sensors['occupancy'] = max(0, min(100, sensors['occupancy'] + random.randint(-5, 5)))
-    sensors['energy'] = round(1.2 + random.uniform(-0.3, 0.3), 1)
+    # Safe defaults to prevent KeyError
+    sensors = data.get('sensors', {
+        "temperature": 22.0,
+        "occupancy": 50,
+        "energy": 1.0,
+        "status": "Healthy"
+    })
     
+    # Simulate fluctuations safely
+    try:
+        sensors['temperature'] = round(sensors.get('temperature', 22.0) + random.uniform(-0.5, 0.5), 1)
+        sensors['occupancy'] = max(0, min(100, sensors.get('occupancy', 50) + random.randint(-2, 2)))
+        sensors['energy'] = round(sensors.get('energy', 1.0) + random.uniform(-0.1, 0.1), 1)
+    except Exception:
+        pass # Fallback to existing values
+        
     data['sensors'] = sensors
     save_json(DATA_FILE, data)
     return jsonify(sensors)

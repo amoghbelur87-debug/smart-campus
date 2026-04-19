@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     
     fetchSensors();
-    setInterval(fetchSensors, 3000); // Poll sensors every 3s
+    setInterval(fetchSensors, 5000); // Poll sensors every 5s for stability
 
     // 2. Chat Logic
     chatForm.addEventListener('submit', async (e) => {
@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query })
             });
+            if (!res.ok) throw new Error('Network error');
             const data = await res.json();
             appendMessage('ai', data.response);
         } catch (err) {
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ location })
             });
+            if (!res.ok) throw new Error('Scan failed');
             const data = await res.json();
             
             analyzerResult.innerHTML = `
@@ -64,13 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchSensors() {
         try {
             const res = await fetch('/api/sensors');
+            if (!res.ok) return;
             const data = await res.json();
             
-            updateVal('temp-val', data.temperature);
-            updateVal('occupancy-val', data.occupancy);
-            updateVal('energy-val', data.energy);
+            if (data.temperature) updateVal('temp-val', data.temperature);
+            if (data.occupancy) updateVal('occupancy-val', data.occupancy);
+            if (data.energy) updateVal('energy-val', data.energy);
         } catch (err) {
-            console.error('Sensor sync failed');
+            console.warn('Sensor update missed');
         }
     }
 
@@ -99,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const recognition = new Recognition();
         
         voiceBtn.onclick = () => {
-            voiceBtn.style.color = '#ff0000';
+            voiceBtn.style.color = '#ff4444';
             recognition.start();
         };
 
