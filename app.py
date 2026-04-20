@@ -7,6 +7,10 @@ from datetime import datetime
 
 app = Flask(__name__)
 
+print("--- SMART CAMPUS AI STARTUP ---")
+print(f"Current Working Directory: {os.getcwd()}")
+print(f"Files in directory: {os.listdir('.')}")
+
 DATA_FILE = 'campus_data.json'
 LOGS_FILE = 'logs.json'
 
@@ -107,4 +111,7 @@ def scan():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
+    print(f"Starting directly on port {port}...")
     app.run(host="0.0.0.0", port=port)
+else:
+    print("Application loaded as module (likely by WSGI server)")
