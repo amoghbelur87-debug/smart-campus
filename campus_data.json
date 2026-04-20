@@ -1,9 +1,9 @@
 {
   "campus_name": "Smart Campus Command Center",
   "sensors": {
-    "temperature": 22.9,
-    "occupancy": 6,
-    "energy": 0.9,
+    "temperature": 22.6,
+    "occupancy": 28,
+    "energy": 0.3,
     "status": "Healthy"
   },
   "knowledge_base": {

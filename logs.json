@@ -72,5 +72,41 @@
     "type": "CHAT",
     "details": "lab",
     "response": "Computer and Science labs are located in Block B and C respectively. Access requires a valid ID."
+  },
+  {
+    "timestamp": "2026-04-19 22:56:46",
+    "type": "QR_SCAN",
+    "details": "Library",
+    "response": "\ud83d\udccd Welcome to the Central Library! Silence is appreciated. You can find study cabins on the 2nd floor. | Status: Occupancy: 40%"
+  },
+  {
+    "timestamp": "2026-04-19 22:56:48",
+    "type": "QR_SCAN",
+    "details": "Lab",
+    "response": "\ud83d\udccd Welcome to the Advanced AI Lab. Please log in to your workstation to begin. | Status: Available: 12 PCs"
+  },
+  {
+    "timestamp": "2026-04-19 22:56:51",
+    "type": "QR_SCAN",
+    "details": "Canteen",
+    "response": "\ud83d\udccd Welcome to the Canteen. Lunch special today: Vegetable Biryani. | Status: Wait time: ~10 mins"
+  },
+  {
+    "timestamp": "2026-04-19 22:57:02",
+    "type": "CHAT",
+    "details": "library",
+    "response": "The central library is open from 8:00 AM to 10:00 PM. It is located near the Science Block."
+  },
+  {
+    "timestamp": "2026-04-19 22:57:07",
+    "type": "CHAT",
+    "details": "lab",
+    "response": "Computer and Science labs are located in Block B and C respectively. Access requires a valid ID."
+  },
+  {
+    "timestamp": "2026-04-19 22:57:14",
+    "type": "CHAT",
+    "details": "canteen",
+    "response": "The main canteen is located behind the auditorium. Timing: 9:00 AM - 8:00 PM."
   }
 ]
